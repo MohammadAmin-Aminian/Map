@@ -14,7 +14,7 @@ This Python script uses `pygmt` and `obspy` to generate a detailed map focused o
     
    You can activate the conda environment by:
    ```
-   conda activate env spin-ml
+   conda activate env pygmt
    ```
 
 ## Usage
@@ -50,7 +50,7 @@ This Python script uses `pygmt` and `obspy` to generate a detailed map focused o
 
 ## Author
 
-- Mohammad Amin
+- Mohammad Amin Aminian
 
 ## License
 
