@@ -13,7 +13,7 @@ conda activate env spin-ml
 import pygmt
 import numpy as np
 from obspy.clients.fdsn import Client
-
+ridge_data = pygmt.datasets.load_sample_data(name="ocean_ridge_points")
 client = Client("RESIF")
 # start =UTCDateTime("2012-10-12")
 net = "YV"
@@ -72,7 +72,12 @@ fig.plot(
 fig.colorbar(
     frame='+l"Topography"'
 )
-
+fig.plot(
+    data=ridge_data,
+    style='c0.05c',  # Small circle marker
+    color='red',
+    pen='black'
+)
 # Add labels for each station
 for label, lon, lat in zip(labels, lons, lats):
     fig.text(
@@ -80,7 +85,7 @@ for label, lon, lat in zip(labels, lons, lats):
         y=lat,
         text=label,
         offset="0.2c",
-        font="10p,Times-bold,black",
+        font="10p,Times-Bold,black",
         justify="LM"
     )
 
@@ -96,7 +101,7 @@ for label, lon, lat in zip(labels, lons, lats):
 
 # Add label for La Réunion Island
 fig.text(
-    x=55,
+    x=49,
     y=-21,
     text="La Réunion",
     offset="0.2c",
@@ -116,7 +121,7 @@ fig.text(
 
 fig.text(
     x= 60,
-    y= -30,
+    y= -29,
     text="SWIR",
     offset="0.2c",
     font="10p,Times-Bold,blue",
@@ -134,8 +139,36 @@ fig.text(
     angle = -40
 )
 
+#Tectornic plates
+fig.text(
+    x= 53,
+    y= -27,
+    text="Somali Plate",
+    offset="0.2c",
+    font="10p,Times-Bold,purple",
+    justify="LM",
+    angle = 0
+)
+fig.text(
+    x= 70.5,
+    y= -16.5,
+    text="Australian Plate",
+    offset="0.2c",
+    font="10p,Times-Bold,purple",
+    justify="LM",
+    angle = -65
+)
+fig.text(
+    x= 60,
+    y= -35,
+    text="Antarctic Plate",
+    offset="0.2c",
+    font="10p,Times-Bold,purple",
+    justify="LM",
+    angle = 45
+)
 
-with fig.inset(position="jBR+w2c+o0.5c/0.2c", box="+pgrey"):
+with fig.inset(position="jBR+w2c+o0.5c/0.2c", box="+pgrey+p3p,black"):
     # Use a plotting function to create a figure inside the inset
     fig.coast(
         region=[5, 140, -40,80],
@@ -152,7 +185,8 @@ with fig.inset(position="jBR+w2c+o0.5c/0.2c", box="+pgrey"):
     # latitude of the bottom left corner of the rectangle, and the last two
     # columns the longitude and latitude of the upper right corner.
     rectangle = [90, -15, 130,10],
-    fig.plot(data=rectangle, style="r+s", pen="2p,red")
+    fig.plot(data=rectangle, style="r+s", pen="1p,red")
+
 
 fig.show(dpi=300)
 fig.savefig(dpi=300, fname="MAP_RHUM1.jpg")
