@@ -19,6 +19,7 @@ client = Client("RESIF")
 net = "YV"
 sta = "RR28,RR29,RR34,RR36,RR38,RR40,RR50,RR52"
 
+
 invz = client.get_stations(
     network=net,
     station=sta,
@@ -26,6 +27,15 @@ invz = client.get_stations(
     location="*",
     level="response"
 )
+
+invz_RR41 = client.get_stations(
+    network=net,
+    station="RR41",
+    channel="BHZ",
+    location="*",
+    level="response"
+)
+
 
 lats = np.zeros(len(invz[0]))
 lons = np.zeros(len(invz[0]))
@@ -61,33 +71,11 @@ fig.grdimage(
 )
 
 fig.plot(
-    x=lons,
-    y=lats,
-    style='t0.10i',  # Triangle marker with size 0.15 inches
-    color='red',
-    pen='black',
-    label='Trillium 240s',
-)
-
-fig.colorbar(
-    frame='+l"Topography"'
-)
-fig.plot(
     data=ridge_data,
     style='c0.05c',  # Small circle marker
     color='red',
-    pen='black'
+    pen='black',    
 )
-# Add labels for each station
-for label, lon, lat in zip(labels, lons, lats):
-    fig.text(
-        x=lon,
-        y=lat,
-        text=label,
-        offset="0.2c",
-        font="10p,Times-Bold,black",
-        justify="LM"
-    )
 
 # Add label for Madagascar
 # fig.text(
@@ -116,7 +104,8 @@ fig.text(
     offset="0.2c",
     font="10p,Times-Bold,blue",
     justify="LM",
-    angle = -65
+    angle = -65,
+    fill="lightorange",  # Background fill color
 )
 
 fig.text(
@@ -126,7 +115,8 @@ fig.text(
     offset="0.2c",
     font="10p,Times-Bold,blue",
     justify="LM",
-    angle = 35
+    angle = 35,
+    fill="lightorange",  # Background fill color
 )
 
 fig.text(
@@ -136,10 +126,12 @@ fig.text(
     offset="0.2c",
     font="10p,Times-Bold,blue",
     justify="LM",
-    angle = -40
+    angle = -40,
+    fill="lightorange",  # Background fill color
 )
 
 #Tectornic plates
+
 fig.text(
     x= 53,
     y= -27,
@@ -147,7 +139,9 @@ fig.text(
     offset="0.2c",
     font="10p,Times-Bold,purple",
     justify="LM",
-    angle = 0
+    angle = 0,
+    fill="lightyellow",  # Background fill color
+    pen="1p,black",
 )
 fig.text(
     x= 70.5,
@@ -156,7 +150,9 @@ fig.text(
     offset="0.2c",
     font="10p,Times-Bold,purple",
     justify="LM",
-    angle = -65
+    angle = -65,
+    fill="lightyellow",  # Background fill color
+    pen="1p,black",
 )
 fig.text(
     x= 60,
@@ -165,7 +161,9 @@ fig.text(
     offset="0.2c",
     font="10p,Times-Bold,purple",
     justify="LM",
-    angle = 45
+    angle = 45,
+    fill="lightyellow",  # Background fill color
+    pen="1p,black",
 )
 
 with fig.inset(position="jBR+w2c+o0.5c/0.2c", box="+pgrey+p3p,black"):
@@ -186,8 +184,58 @@ with fig.inset(position="jBR+w2c+o0.5c/0.2c", box="+pgrey+p3p,black"):
     # columns the longitude and latitude of the upper right corner.
     rectangle = [90, -15, 130,10],
     fig.plot(data=rectangle, style="r+s", pen="1p,red")
+fig.plot(
+    x=lons,
+    y=lats,
+    style='t0.10i',  # Triangle marker with size 0.15 inches
+    color='red',
+    pen='black',
+    label='Broadband OBS',
+)
+
+fig.colorbar(
+    frame='+l"Topography"'
+)
+
+# Add labels for each station
+for label, lon, lat in zip(labels, lons, lats):
+    if label == "RR40":
+        fig.text(
+            x=lon,
+            y=lat-1,
+            text=label,
+            offset="0.2c",
+            font="10p,Times-Bold,black",
+            justify="LM",
+            no_clip=True,
+            fill="lightblue",
+        )
+    else:    
+        fig.text(
+        x=lon,
+        y=lat,
+        text=label,
+        offset="0.2c",
+        font="10p,Times-Bold,black",
+        justify="LM",
+        no_clip=True,
+        fill="lightblue",
+        )
 
 
+fig.plot(
+    x=invz_RR41[0][0][0].longitude,
+    y=invz_RR41[0][0][0].latitude,
+    style='a0.3c',  # Triangle marker with size 0.15 inches
+    color='yellow',
+    pen='black',
+    label='Active Seamount',
+)
+
+fig.legend(
+    position="JTL+jTL+o0.1c",  # Place legend at Top Right corner inside the map, with a slight offset
+    box="+gwhite+p1p", # White background with a black outline of 1 point thickness
+)
 fig.show(dpi=300)
 fig.savefig(dpi=300, fname="MAP_RHUM1.jpg")
 
