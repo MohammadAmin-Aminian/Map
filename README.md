@@ -1,4 +1,7 @@
 # Bathymetry Map Generator README
+<div align="center">
+    <img src="MAP_RHUM1_Ridges.jpg" width="200" alt="ComPy Logo">
+</div>
 
 ## Description
 This Python script uses `pygmt` and `obspy` to generate a detailed map focused on the RHUM-RUM expriment. The map displays bathymetry, topography, ocean ridge points, station locations from a specific network (YV), and various labels including tectonic plate names.
