@@ -1,6 +1,6 @@
 # Bathymetry Map Generator README
 <div align="center">
-    <img src="MAP_RHUM1_Ridges.jpg" width="200" alt="ComPy Logo">
+    <img src="MAP_RHUM1_Ridges.jpg" width="500" alt="ComPy Logo">
 </div>
 
 ## Description
