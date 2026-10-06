@@ -44,12 +44,16 @@ Output paths, relief resolution and figure display are configurable.
 python -m pytest -q
 ```
 
-Tests check metadata traversal, duplicate/conflicting epochs and inset coordinates
-with a simulated plotting interface. Full rendering requires GMT and its datasets;
-remote service access and a publication-ready rendered map are not covered by these tests.
+Unit tests check metadata traversal, duplicate/conflicting epochs and inset coordinates.
+The CI render job installs the conda environment and creates a PNG with real GMT,
+a synthetic local relief grid and local ridge coordinates. Without PyGMT, this
+integration test is explicitly skipped locally. Remote services, actual station
+locations and publication-quality visual layout require a separate survey review.
 
 [PyGMT documentation](https://www.pygmt.org/latest/) ·
 [ObsPy station metadata](https://docs.obspy.org/packages/obspy.clients.fdsn.html)
 
 Author: Mohammad Amin Aminian. No license was present in the original repository;
 no additional reuse rights are asserted here.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development and bug reports.
