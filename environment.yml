@@ -1,0 +1,9 @@
+name: rhum-map
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pygmt>=0.15,<0.19
+  - gmt>=6.5,<7
+  - obspy>=1.4,<2
+  - pytest>=8,<10
