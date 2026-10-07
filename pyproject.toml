@@ -18,11 +18,11 @@ dependencies = [
 dev = ["pytest>=8,<10", "build>=1"]
 
 [project.scripts]
-rhum-rum-map = "MAP_RHUM_RUM:main"
+rhum-rum-map = "rhum_rum_mapper:main"
 
 [project.urls]
 Repository = "https://github.com/MohammadAmin-Aminian/Map"
 Publication = "https://doi.org/10.1093/gji/ggaf253"
 
 [tool.setuptools]
-py-modules = ["MAP_RHUM_RUM"]
+py-modules = ["MAP_RHUM_RUM", "rhum_rum_mapper"]
