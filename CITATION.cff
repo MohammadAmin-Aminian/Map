@@ -5,7 +5,7 @@ type: software
 authors:
   - family-names: Aminian
     given-names: Mohammad Amin
-repository-code: "https://github.com/MohammadAmin-Aminian/Map"
+repository-code: "https://github.com/MohammadAmin-Aminian/rhum-rum-geospatial-mapper"
 license: GPL-3.0-only
 references:
   - type: article
