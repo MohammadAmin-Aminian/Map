@@ -4,7 +4,7 @@
 
 **Reproducible bathymetry, OBS-network and tectonic-context mapping for the RHUM-RUM experiment.**
 
-[![Regression tests](https://github.com/MohammadAmin-Aminian/Map/actions/workflows/tests.yml/badge.svg)](https://github.com/MohammadAmin-Aminian/Map/actions/workflows/tests.yml)
+[![Regression tests](https://github.com/MohammadAmin-Aminian/rhum-rum-geospatial-mapper/actions/workflows/tests.yml/badge.svg)](https://github.com/MohammadAmin-Aminian/rhum-rum-geospatial-mapper/actions/workflows/tests.yml)
 [![PyGMT](https://img.shields.io/badge/PyGMT-GMT-blue)](https://www.pygmt.org/)
 
 This repository builds publication-style maps for the RHUM-RUM ocean-bottom seismometer experiment using **PyGMT**, **GMT** and **ObsPy**. It combines station metadata, bathymetry, spreading-ridge geometry, tectonic labels and an inset location map in a reproducible workflow.
@@ -66,8 +66,8 @@ deduplicate station epochs / reject conflicts
 PyGMT depends on the native GMT library. The recommended setup is conda-forge:
 
 ```bash
-git clone https://github.com/MohammadAmin-Aminian/Map.git
-cd Map
+git clone https://github.com/MohammadAmin-Aminian/rhum-rum-geospatial-mapper.git
+cd rhum-rum-geospatial-mapper
 conda env create -f environment.yml
 conda activate rhum-map
 python -m pip install -e '.[dev]'
@@ -199,9 +199,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [CHANGELOG.md](CHANGELOG.md).
 This repository is part of a broader seismic/geophysical software portfolio:
 
 - [ComPy](https://github.com/MohammadAmin-Aminian/ComPy) — seafloor compliance processing, DPG calibration and layered elastic inversion.
-- [OBS Transient Cleaner](https://github.com/MohammadAmin-Aminian/Transients) — periodic OBS instrument-transient removal.
-- [ComPy Inversion Tuner](https://github.com/MohammadAmin-Aminian/Optimization) — reproducible tuning of compliance-inversion controls.
-- [RHUM-RUM Geospatial Mapper](https://github.com/MohammadAmin-Aminian/Map) — bathymetry, OBS-network and tectonic-context mapping.
+- [OBS Transient Cleaner](https://github.com/MohammadAmin-Aminian/obs-transient-cleaner) — periodic OBS instrument-transient removal.
+- [ComPy Inversion Tuner](https://github.com/MohammadAmin-Aminian/compy-inversion-tuner) — reproducible tuning of compliance-inversion controls.
+- [RHUM-RUM Geospatial Mapper](https://github.com/MohammadAmin-Aminian/rhum-rum-geospatial-mapper) — bathymetry, OBS-network and tectonic-context mapping.
 - [VRE Seismic Enhancement](https://github.com/MohammadAmin-Aminian/vre-seismic-enhancement) — Virtual Resolution Enhancement for seismic sections.
 - [Gabor Seismic Filter](https://github.com/MohammadAmin-Aminian/gabor-seismic-filter) — orientation-selective 2-D seismic filtering in MATLAB.
 
