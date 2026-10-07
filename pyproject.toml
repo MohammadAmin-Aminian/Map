@@ -9,6 +9,8 @@ description = "Reproducible RHUM-RUM bathymetry, OBS-network and tectonic-contex
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{name = "Mohammad Amin Aminian"}]
+license = "GPL-3.0-only"
+license-files = ["LICENSE"]
 dependencies = [
   "obspy>=1.4,<2",
   "pygmt>=0.15,<0.19"
