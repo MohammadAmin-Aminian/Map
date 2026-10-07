@@ -1,7 +1,10 @@
 name: Regression tests
+
 on: [push, pull_request]
+
 permissions:
   contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -10,8 +13,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install obspy pytest numpy
-      - run: python -m pytest -q
+      - run: python -m pip install -e '.[dev]'
+      - run: python -m pytest -q tests/test_map.py
+      - run: rhum-rum-map --help
+      - run: python -m build
+
   render:
     runs-on: ubuntu-latest
     defaults:
@@ -25,5 +31,6 @@ jobs:
           environment-file: environment.yml
           activate-environment: rhum-map
           auto-activate-base: false
+      - run: python -m pip install -e '.[dev]'
       - run: python -c "import pygmt; pygmt.show_versions()"
       - run: python -m pytest -q tests/test_rendering.py
