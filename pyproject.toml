@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rhum-rum-geospatial-mapper"
+version = "0.1.0"
+description = "Reproducible RHUM-RUM bathymetry, OBS-network and tectonic-context mapping"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "Mohammad Amin Aminian"}]
+dependencies = [
+  "obspy>=1.4,<2"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+rhum-rum-map = "MAP_RHUM_RUM:main"
+
+[project.urls]
+Repository = "https://github.com/MohammadAmin-Aminian/Map"
+Publication = "https://doi.org/10.1093/gji/ggaf253"
+
+[tool.setuptools]
+py-modules = ["MAP_RHUM_RUM"]
