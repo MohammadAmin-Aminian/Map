@@ -10,11 +10,12 @@ readme = "README.md"
 requires-python = ">=3.10"
 authors = [{name = "Mohammad Amin Aminian"}]
 dependencies = [
-  "obspy>=1.4,<2"
+  "obspy>=1.4,<2",
+  "pygmt>=0.15,<0.19"
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8,<10"]
+dev = ["pytest>=8,<10", "build>=1"]
 
 [project.scripts]
 rhum-rum-map = "MAP_RHUM_RUM:main"
