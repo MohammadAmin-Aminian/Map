@@ -68,20 +68,21 @@ git clone https://github.com/MohammadAmin-Aminian/Map.git
 cd Map
 conda env create -f environment.yml
 conda activate rhum-map
+python -m pip install -e '.[dev]'
 ```
 
-The environment includes Python, PyGMT, GMT, ObsPy and pytest.
+The environment includes Python, PyGMT, GMT, ObsPy and pytest. The historical script entry point `python MAP_RHUM_RUM.py ...` remains available for backward compatibility.
 
 ## Generate the default map
 
 ```bash
-python MAP_RHUM_RUM.py --output rhum-rum.jpg
+rhum-rum-map --output rhum-rum.jpg
 ```
 
 To display the figure after saving:
 
 ```bash
-python MAP_RHUM_RUM.py --output rhum-rum.jpg --show
+rhum-rum-map --output rhum-rum.jpg --show
 ```
 
 The default region is:
@@ -96,7 +97,7 @@ and the default relief grid is `@earth_relief_30s`.
 For a lighter download:
 
 ```bash
-python MAP_RHUM_RUM.py --relief @earth_relief_01m --output rhum-rum.jpg
+rhum-rum-map --relief @earth_relief_01m --output rhum-rum.jpg
 ```
 
 ## Offline / controlled metadata mode
@@ -104,7 +105,7 @@ python MAP_RHUM_RUM.py --relief @earth_relief_01m --output rhum-rum.jpg
 By default, station metadata are requested through an ObsPy FDSN client. For a fully controlled run, provide a local StationXML file:
 
 ```bash
-python MAP_RHUM_RUM.py \
+rhum-rum-map \
     --inventory stations.xml \
     --output rhum-rum.jpg
 ```
